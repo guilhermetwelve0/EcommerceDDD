@@ -1,4 +1,5 @@
 ﻿using Entities.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,6 +17,8 @@ namespace Infrastructure.Configuration
         public DbSet<Produto> Produto { get; set; }
         public DbSet<CompraUsuario> CompraUsuario { get; set; }
 
+        public DbSet<IdentityUser> IdentityUsers { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -23,6 +26,13 @@ namespace Infrastructure.Configuration
                 optionsBuilder.UseSqlServer(GetStringConectionConfig());
                 base.OnConfiguring(optionsBuilder);
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<IdentityUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
+
+            base.OnModelCreating(builder);
         }
 
         private string GetStringConectionConfig()
