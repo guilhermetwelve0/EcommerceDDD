@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Infrastructure.Configuration
 {
-    public class ContextBase : IdentityDbContext<ApplicationUser>
+    public class ContextBase : IdentityDbContext<IdentityUser>
     {
         public ContextBase(DbContextOptions<ContextBase> options) : base(options)
         {
