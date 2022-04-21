@@ -26,6 +26,8 @@ namespace Domain.Services
 
             if (validaNome && validaValor)
             {
+                produto.DataCadastro = DateTime.Now;
+                produto.DataAlteracao = DateTime.Now;
                 produto.Estado = true;
                 await _IProduct.Add(produto);
             }
@@ -39,6 +41,7 @@ namespace Domain.Services
 
             if (validaNome && validaValor)
             {
+
                 await _IProduct.Update(produto);
             }
         }
