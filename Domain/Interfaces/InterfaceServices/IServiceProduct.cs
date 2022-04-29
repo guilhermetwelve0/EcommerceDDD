@@ -12,6 +12,6 @@ namespace Domain.Interfaces.InterfaceServices
         Task AddProduct(Produto produto);
         Task UpdateProduct(Produto produto);
 
-        Task<List<Produto>> ListarProdutosComEstoque(Expression<Func<Produto, bool>> exProduto);
+        Task<List<Produto>> ListarProdutosComEstoque();
     }
 }

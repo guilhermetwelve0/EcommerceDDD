@@ -2,6 +2,31 @@
 
 var ObjetoVenda = new Object();
 
+ObjetoVenda.AdicionarCarrinho = function (idProduto) {
+
+
+
+
+    var nome = $("#nome_" + idProduto).val();
+    var qtd = $("#qtd_" + idProduto).val();
+
+    $.ajax({
+        type: 'POST',
+        url: "/api/AdicionarProdutoCarrinho",
+        dataType: "JSON",
+        cache: false,
+        async: true,
+        data: {
+            "id": idProduto, "nome": nome, "qtd": qtd
+        },
+        sucess: function (data) {
+
+
+        }
+    });
+}
+
+
 ObjetoVenda.CaregaProdutos = function() {
 
     $.ajax({
@@ -14,7 +39,7 @@ ObjetoVenda.CaregaProdutos = function() {
 
             var htmlConteudo = "";
 
-            data.forEach(function (entitie) {
+            data.forEach(function (Entitie) {
 
                 htmlConteudo += " <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
 
@@ -26,8 +51,12 @@ ObjetoVenda.CaregaProdutos = function() {
 
                 htmlConteudo += "Quantidade : <input type'number' value='1' id='" + idQtd + "'>";
 
+                htmlConteudo += "<input type='button' onclick='ObjetoVenda.AdicionarCarrinho(" + Entitie.id + ")' value ='Comprar'> </br> ";
 
+                htmlConteudo += " </div>";
             });
+
+            $("#DivVenda").html(htmlConteudo);
 
         }
     });
