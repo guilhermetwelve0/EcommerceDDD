@@ -4,11 +4,8 @@ var ObjetoVenda = new Object();
 
 ObjetoVenda.AdicionarCarrinho = function (idProduto) {
 
-
-
-
     var nome = $("#nome_" + idProduto).val();
-    var qtd = $("#qtd_" + idProduto).val();
+    var qtd = ("#qtd_" + idProduto).val();
 
     $.ajax({
         type: 'POST',
@@ -19,15 +16,16 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
         data: {
             "id": idProduto, "nome": nome, "qtd": qtd
         },
-        sucess: function (data) {
-
+        success: function (data) {
 
         }
     });
+
+
 }
 
 
-ObjetoVenda.CaregaProdutos = function() {
+ObjetoVenda.CarregaProdutos = function () {
 
     $.ajax({
         type: 'GET',
@@ -35,7 +33,7 @@ ObjetoVenda.CaregaProdutos = function() {
         dataType: "JSON",
         cache: false,
         async: true,
-        sucess: function (data) {
+        success: function (data) {
 
             var htmlConteudo = "";
 
@@ -47,22 +45,23 @@ ObjetoVenda.CaregaProdutos = function() {
                 var idQtd = "qtd_" + Entitie.id;
 
                 htmlConteudo += "<label id='" + idNome + "' > Produto: " + Entitie.nome + "</label></br>";
-                htmlConteudo += "<label> Valor: " + Entitie.valor + "</label></br>";
+                htmlConteudo += "<label>  Valor: " + Entitie.valor + "</label></br>";
 
                 htmlConteudo += "Quantidade : <input type'number' value='1' id='" + idQtd + "'>";
 
                 htmlConteudo += "<input type='button' onclick='ObjetoVenda.AdicionarCarrinho(" + Entitie.id + ")' value ='Comprar'> </br> ";
 
                 htmlConteudo += " </div>";
+
             });
 
             $("#DivVenda").html(htmlConteudo);
-
         }
     });
+
 }
 
 
 $(function () {
-    ObjetoVenda.CaregaProdutos();
+    ObjetoVenda.CarregaProdutos();
 });
