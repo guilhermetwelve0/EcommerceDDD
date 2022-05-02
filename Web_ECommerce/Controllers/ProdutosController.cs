@@ -100,6 +100,9 @@ namespace Web_ECommerce.Controllers
                         ModelState.AddModelError(item.NomePropriedade, item.mensagem);
                     }
 
+                    ViewBag.Alerta = true;
+                    ViewBag.Mensagem = "Verifique, ocorreu algum erro!";
+
                     return View("Edit", produto);
                 }
 
@@ -151,6 +154,8 @@ namespace Web_ECommerce.Controllers
             return Json(await _InterfaceProductApp.ListarProdutosComEstoque());
         }
 
-        
+
+
+
     }
 }
