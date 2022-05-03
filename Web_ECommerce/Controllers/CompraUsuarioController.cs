@@ -34,7 +34,7 @@ namespace Web_ECommerce.Controllers
                 {
                     IdProduto = Convert.ToInt32(id),
                     QtdCompra = Convert.ToInt32(qtd),
-                    Estado = EnumEstadoCompra.Produto_Caminho,
+                    Estado = EnumEstadoCompra.Produto_Carrinho,
                     UserId = usuario.Id
                 });
                 return Json(new { sucesso = true });
