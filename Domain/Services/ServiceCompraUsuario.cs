@@ -24,7 +24,7 @@ namespace Domain.Services
 
         public async Task<CompraUsuario> ProdutosComprados(string userId)
         {
-            throw new NotImplementedException();
+            return await _ICompraUsuario.ProdutosCompradosPorEstado(userId, EnumEstadoCompra.Produto_Comprado);
         }
     }
 }
