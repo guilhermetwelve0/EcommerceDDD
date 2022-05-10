@@ -7,10 +7,11 @@ using Entities.Entities;
 using Entities.Entities.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Web_ECommerce.Models;
 
 namespace Web_ECommerce.Controllers
 {
-    public class CompraUsuarioController : Controller
+    public class CompraUsuarioController : HelpQrCode
     {
 
         public readonly UserManager<ApplicationUser> _userManager;
